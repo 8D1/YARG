@@ -114,7 +114,7 @@ namespace YARG.Menu.MusicLibrary
                 return;
             }
 
-            var songEntry = songViewType.SongMetadata;
+            var songEntry = songViewType.SongEntry;
 
             _album.text = songEntry.Album;
             _source.text = SongSources.SourceToGameName(songEntry.Source);
@@ -229,7 +229,7 @@ namespace YARG.Menu.MusicLibrary
             var originalTexture = _albumCover.texture;
 
             // Load the new one
-            await songViewType.SongMetadata.SetRawImageToAlbumCover(_albumCover, _cancellationToken.Token);
+            await _albumCover.LoadAlbumCover(songViewType.SongEntry, _cancellationToken.Token);
 
             // Dispose of the old texture (prevent memory leaks)
             if (originalTexture != null)
@@ -252,7 +252,7 @@ namespace YARG.Menu.MusicLibrary
                 return;
             }
 
-            var songEntry = songViewType.SongMetadata;
+            var songEntry = songViewType.SongEntry;
 
             string value = type switch
             {

@@ -12,9 +12,9 @@ namespace YARG.Menu.MusicLibrary
     {
         private const int TRIES = 10;
 
-        private static readonly List<SongMetadata> _recommendedSongs = new();
+        private static readonly List<SongEntry> _recommendedSongs = new();
 
-        public static List<SongMetadata> GetRecommendedSongs()
+        public static List<SongEntry> GetRecommendedSongs()
         {
             _recommendedSongs.Clear();
 
@@ -53,7 +53,7 @@ namespace YARG.Menu.MusicLibrary
             }
         }
 
-        private static void AddMostPlayedSongs(List<SongMetadata> mostPlayed)
+        private static void AddMostPlayedSongs(List<SongEntry> mostPlayed)
         {
             // Add two random top ten most played songs (ten tries each)
             for (int i = 0; i < 2; i++)
@@ -70,7 +70,7 @@ namespace YARG.Menu.MusicLibrary
             }
         }
 
-        private static void AddSongsFromTopPlayedArtists(List<SongMetadata> mostPlayed)
+        private static void AddSongsFromTopPlayedArtists(List<SongEntry> mostPlayed)
         {
             var artists = GlobalVariables.Instance.SongContainer.Artists;
             // Pick 1 or 2 random songs from artists that are in the most played (ten tries each)
