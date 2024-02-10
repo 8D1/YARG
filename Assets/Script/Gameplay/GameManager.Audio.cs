@@ -43,8 +43,9 @@ namespace YARG.Gameplay
 
             try
             {
-                    Song.LoadAudio(GlobalVariables.AudioManager, GlobalVariables.Instance.SongSpeed);
-                    GlobalVariables.AudioManager.SongEnd += OnAudioEnd;
+                var channels =  Song.LoadAudioStreams();
+                GlobalVariables.AudioManager.LoadSong(channels, GlobalVariables.Instance.SongSpeed);
+                GlobalVariables.AudioManager.SongEnd += OnAudioEnd;
             }
             catch (Exception ex)
             {
